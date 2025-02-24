@@ -45,6 +45,47 @@ class ListaArrayString {
     }
 }
 
+class Pilha {
+    private String[] array;
+    private int topo;
+
+    public Pilha(int capacidade) {
+        this.array = new String[capacidade];
+        this.topo = -1;
+    }
+
+    public void push(String elemento) {
+        if (topo == array.length - 1) {
+            System.out.println("Erro: Pilha cheia!");
+            return;
+        }
+        array[++topo] = elemento;
+        System.out.println("Elemento " + elemento + " adicionado à pilha.");
+    }
+
+
+    public void pop() {
+        if (topo == -1) {
+            System.out.println("Erro: Pilha vazia!");
+            return;
+        }
+        System.out.println("Elemento " + array[topo--] + " removido da pilha.");
+    }
+
+
+    public void topo() {
+        if (topo == -1) {
+            System.out.println("Erro: Pilha vazia!");
+            return;
+        }
+        System.out.println("Topo da pilha: " + array[topo]);
+    }
+
+    public boolean vazia() {
+        return topo == -1;
+    }
+}
+
 public class TesteListaString {
     public static void main(String[] args) {
         ListaArrayString lista = new ListaArrayString(4);
@@ -57,5 +98,15 @@ public class TesteListaString {
         lista.buscar("Bernado");
         lista.buscar("Carlos");
         lista.imprimirLista();
+
+        Pilha pilha = new Pilha(5);
+        pilha.push("Pedro");
+        pilha.push("José");
+        pilha.push("Flávio");
+        pilha.topo();
+        pilha.pop();
+        pilha.topo();
+        pilha.pop();
     }
 }
+
